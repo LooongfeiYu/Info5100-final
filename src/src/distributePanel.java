@@ -4,6 +4,10 @@
  */
 package src;
 
+import javax.swing.table.DefaultTableModel;
+import model.Shipment;
+import model.ShipmentDirectory;
+
 /**
  *
  * @author wenqing-mbp16
@@ -28,7 +32,7 @@ public class distributePanel extends javax.swing.JPanel {
 
         distributeTitleLabel = new javax.swing.JLabel();
         shipmentsTable = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        shipmentTable = new javax.swing.JTable();
         iDLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         plateLabel = new javax.swing.JLabel();
@@ -37,10 +41,11 @@ public class distributePanel extends javax.swing.JPanel {
         plateField = new javax.swing.JTextField();
         assignButton = new javax.swing.JButton();
         shipmentsTitleLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         distributeTitleLabel.setText("Distribute");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        shipmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -59,7 +64,7 @@ public class distributePanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        shipmentsTable.setViewportView(jTable1);
+        shipmentsTable.setViewportView(shipmentTable);
 
         iDLabel.setText("Driver ID ");
 
@@ -94,6 +99,13 @@ public class distributePanel extends javax.swing.JPanel {
 
         shipmentsTitleLabel.setText("Shipments");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,8 +139,13 @@ public class distributePanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(162, 162, 162))
             .addGroup(layout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(assignButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(assignButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -140,7 +157,9 @@ public class distributePanel extends javax.swing.JPanel {
                 .addComponent(shipmentsTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shipmentsTable, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iDLabel)
                     .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,17 +193,33 @@ public class distributePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_assignButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
+        model.setRowCount(0);
+        for(Shipment s: ShipmentDirectory.getInstance().getShipment()){
+            Object[] row = new Object[3];
+            row[0] = s.getTrackingNum();
+            row[1] = s.getStartCountry() + "," + s.getStartAddress();
+            row[2] = s.getDesCountry() + "," + s.getDesAddress();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignButton;
     private javax.swing.JLabel distributeTitleLabel;
     private javax.swing.JTextField iDField;
     private javax.swing.JLabel iDLabel;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField plateField;
     private javax.swing.JLabel plateLabel;
+    private javax.swing.JTable shipmentTable;
     private javax.swing.JScrollPane shipmentsTable;
     private javax.swing.JLabel shipmentsTitleLabel;
     // End of variables declaration//GEN-END:variables

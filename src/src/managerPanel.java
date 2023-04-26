@@ -30,7 +30,7 @@ public class managerPanel extends javax.swing.JPanel {
         truckButton = new javax.swing.JButton();
         driverButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        existingTable = new javax.swing.JTable();
         existingTitleLabel = new javax.swing.JLabel();
         locationField = new javax.swing.JTextField();
         typeField = new javax.swing.JTextField();
@@ -58,7 +58,7 @@ public class managerPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        existingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -77,7 +77,7 @@ public class managerPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(existingTable);
 
         existingTitleLabel.setText("Existing Driver/Truck");
 
@@ -222,11 +222,11 @@ public class managerPanel extends javax.swing.JPanel {
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton driverButton;
+    private javax.swing.JTable existingTable;
     private javax.swing.JLabel existingTitleLabel;
     private javax.swing.JTextField iDPlateField;
     private javax.swing.JLabel iDPlateLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField locationField;
     private javax.swing.JLabel locationLabel;
     private javax.swing.JLabel managerTitleLabel;

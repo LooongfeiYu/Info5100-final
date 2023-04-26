@@ -55,6 +55,11 @@ public class TrackingPanel extends javax.swing.JPanel {
 
         trackButton.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         trackButton.setText("Track");
+        trackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackButtonActionPerformed(evt);
+            }
+        });
 
         packNumLabel.setText("Package Number:");
 
@@ -189,6 +194,11 @@ public class TrackingPanel extends javax.swing.JPanel {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void trackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackButtonActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_trackButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

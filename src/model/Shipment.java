@@ -13,7 +13,8 @@ import java.util.Dictionary;
  * @author yulon
  */
 public class Shipment {
-    
+    private String shipper;
+    private String recipients;
     private int trackingNum;
     private int phoneNum;
     private int driverID;
@@ -27,7 +28,12 @@ public class Shipment {
     private String desAddress;
     private String packageInfo;
     private Status status;
-    private Dictionary<String, Date> arrivals;
+    private ArrayList<String[]> arrivals;
+
+    public Shipment() {
+        arrivals = new ArrayList<>();
+        status = new Status();
+    }
 
     public int getDriverID() {
         return driverID;
@@ -37,9 +43,7 @@ public class Shipment {
         this.driverID = driverID;
     }
 
-    public Shipment() {
-        status = new Status();
-    }
+   
 
     public String getStartCountry() {
         return startCountry;
@@ -137,12 +141,29 @@ public class Shipment {
         this.packageInfo = packageInfo;
     }
 
-    public Dictionary<String, Date> getArrivals() {
+    public ArrayList<String[]> getArrivals() {
         return arrivals;
     }
 
-    public void setArrivals(Dictionary<String, Date> arrivals) {
+    public void setArrivals(ArrayList<String[]> arrivals) {
         this.arrivals = arrivals;
     }
+
+    public String getShipper() {
+        return shipper;
+    }
+
+    public void setShipper(String shipper) {
+        this.shipper = shipper;
+    }
+
+    public String getRecipients() {
+        return recipients;
+    }
+
+    public void setRecipients(String recipients) {
+        this.recipients = recipients;
+    }
+
     
 }

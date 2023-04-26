@@ -13,4 +13,5 @@ import java.util.ArrayList;
 public class Driver extends User {
     private ArrayList<Shipment> shipments;
     private String licensePlate;
+    private String location;
 }

@@ -208,6 +208,7 @@ public class distributePanel extends javax.swing.JPanel {
             row[0] = s.getTrackingNum();
             row[1] = s.getStartCountry() + "," + s.getStartAddress();
             row[2] = s.getDesCountry() + "," + s.getDesAddress();
+            model.addRow(row);
         }
     }
 

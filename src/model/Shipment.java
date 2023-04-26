@@ -148,7 +148,7 @@ public class Shipment {
     public void setArrivals(ArrayList<String[]> arrivals) {
         this.arrivals = arrivals;
     }
-
+    
     public String getShipper() {
         return shipper;
     }
@@ -165,5 +165,8 @@ public class Shipment {
         this.recipients = recipients;
     }
 
-    
+    @Override
+    public String toString() {
+        return this.trackingNum + "";
+    }
 }

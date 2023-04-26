@@ -6,8 +6,11 @@ package src;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Driver;
 import model.Shipment;
 import model.ShipmentDirectory;
+import model.User;
+import model.UserDirectory;
 
 /**
  *
@@ -192,6 +195,31 @@ public class distributePanel extends javax.swing.JPanel {
 
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
         // TODO add your handling code here:
+        Shipment s;
+        int selectedIndex = shipmentTable.getSelectedRow();
+        if(selectedIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please selecr a row");
+        }else{
+            DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
+            s = (Shipment) model.getValueAt(selectedIndex, 0);
+            
+            Driver d = null;
+            //TODO: search id in user dir
+            for(User u : UserDirectory.getInstance().getUsers()){
+                if(u.getId() == Integer.parseInt(iDField.getText())){
+                    d = (Driver) u;
+                    break;
+                }
+            }
+            
+            if(d == null){
+                JOptionPane.showMessageDialog(this, "driver does not exist!");
+            }else{
+                s.setDriverID(Integer.parseInt(iDField.getText()));
+                d.addShipment(s);
+                JOptionPane.showMessageDialog(this, "Assigned!");
+            }
+        }
     }//GEN-LAST:event_assignButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -205,9 +233,10 @@ public class distributePanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(Shipment s: ShipmentDirectory.getInstance().getShipment()){
             Object[] row = new Object[3];
-            row[0] = s.getTrackingNum();
+            row[0] = s;
             row[1] = s.getStartCountry() + "," + s.getStartAddress();
             row[2] = s.getDesCountry() + "," + s.getDesAddress();
+            model.addRow(row);
         }
     }
 

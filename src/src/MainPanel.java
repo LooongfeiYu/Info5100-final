@@ -4,6 +4,8 @@
  */
 package src;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author User
@@ -26,24 +28,59 @@ public class MainPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        splitPanel = new javax.swing.JSplitPane();
         topPanel = new javax.swing.JPanel();
-        loginButton = new javax.swing.JButton();
-        registerButton = new javax.swing.JButton();
-        bottonPanel = new javax.swing.JPanel();
+        packageButton = new javax.swing.JButton();
+        shippingButton = new javax.swing.JButton();
+        trackingButton = new javax.swing.JButton();
+        distributButton = new javax.swing.JButton();
+        managerButton = new javax.swing.JButton();
+        trainsferStationButton = new javax.swing.JButton();
+        bottomPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splitPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        loginButton.setText("Login");
-
-        registerButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        registerButton.setText("Register");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
+        packageButton.setText("packagePanel");
+        packageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
+                packageButtonActionPerformed(evt);
+            }
+        });
+
+        shippingButton.setText("shippingPanel");
+        shippingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shippingButtonActionPerformed(evt);
+            }
+        });
+
+        trackingButton.setText("trackingPanel");
+        trackingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trackingButtonActionPerformed(evt);
+            }
+        });
+
+        distributButton.setText("distributePanel");
+        distributButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                distributButtonActionPerformed(evt);
+            }
+        });
+
+        managerButton.setText("managerPanel");
+        managerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managerButtonActionPerformed(evt);
+            }
+        });
+
+        trainsferStationButton.setText("transferstationPanel");
+        trainsferStationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trainsferStationButtonActionPerformed(evt);
             }
         });
 
@@ -52,54 +89,96 @@ public class MainPanel extends javax.swing.JFrame {
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(registerButton)
-                .addGap(60, 60, 60))
+                .addGap(17, 17, 17)
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(distributButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(packageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(shippingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(managerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(trackingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(trainsferStationButton))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(packageButton)
+                    .addComponent(shippingButton)
+                    .addComponent(trackingButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(distributButton)
+                    .addComponent(managerButton)
+                    .addComponent(trainsferStationButton))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setTopComponent(topPanel);
+        splitPanel.setTopComponent(topPanel);
 
-        javax.swing.GroupLayout bottonPanelLayout = new javax.swing.GroupLayout(bottonPanel);
-        bottonPanel.setLayout(bottonPanelLayout);
-        bottonPanelLayout.setHorizontalGroup(
-            bottonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        bottonPanelLayout.setVerticalGroup(
-            bottonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
-        );
-
-        jSplitPane1.setRightComponent(bottonPanel);
+        bottomPanel.setLayout(new java.awt.CardLayout());
+        splitPanel.setRightComponent(bottomPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(splitPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(splitPanel)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerButtonActionPerformed
+    private void packageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageButtonActionPerformed
+        PackagePanel packagePanel = new PackagePanel(); // create new panel
+        splitPanel.setBottomComponent(packagePanel);    
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);
+    }//GEN-LAST:event_packageButtonActionPerformed
+
+    private void shippingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingButtonActionPerformed
+        ShippingPanel shippingPanel = new ShippingPanel(); // create new panel
+        splitPanel.setBottomComponent(shippingPanel);    
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);
+    }//GEN-LAST:event_shippingButtonActionPerformed
+
+    private void trackingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackingButtonActionPerformed
+        TrackingPanel trackingPanel = new TrackingPanel();
+        splitPanel.setBottomComponent(trackingPanel);
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);// TODO add your handling code here:
+    }//GEN-LAST:event_trackingButtonActionPerformed
+
+    private void distributButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distributButtonActionPerformed
+        distributePanel distributePanel = new distributePanel();
+        splitPanel.setBottomComponent(distributePanel);
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);// TODO add your handling code here:
+    }//GEN-LAST:event_distributButtonActionPerformed
+
+    private void managerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerButtonActionPerformed
+        managerPanel managerPanel = new managerPanel();
+        splitPanel.setBottomComponent(managerPanel);
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);// TODO add your handling code here:
+    }//GEN-LAST:event_managerButtonActionPerformed
+
+    private void trainsferStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainsferStationButtonActionPerformed
+        transferStationPanel transferStationPanel = new transferStationPanel();
+        splitPanel.setBottomComponent(transferStationPanel);
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);// TODO add your handling code here:
+    }//GEN-LAST:event_trainsferStationButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,10 +219,14 @@ public class MainPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bottonPanel;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton loginButton;
-    private javax.swing.JButton registerButton;
+    private javax.swing.JPanel bottomPanel;
+    private javax.swing.JButton distributButton;
+    private javax.swing.JButton managerButton;
+    private javax.swing.JButton packageButton;
+    private javax.swing.JButton shippingButton;
+    private javax.swing.JSplitPane splitPanel;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JButton trackingButton;
+    private javax.swing.JButton trainsferStationButton;
     // End of variables declaration//GEN-END:variables
 }

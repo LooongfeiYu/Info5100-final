@@ -3,20 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package src;
+import connect.util.DbUtil;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author User
  */
 public class loginPanel extends javax.swing.JPanel {
-
+    
+    ResultSet rs = null;
     /**
      * Creates new form loginPanel
      */
     public loginPanel() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +49,11 @@ public class loginPanel extends javax.swing.JPanel {
         passwordLabel.setText("Password");
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -83,6 +96,32 @@ public class loginPanel extends javax.swing.JPanel {
                 .addGap(149, 149, 149))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        String username = userField.getText();
+        String password = passwordField.getText();
+        
+        try{
+            int log = 1;
+            rs = DbUtil.getInstance().getRS("select * from t_user");
+            while(rs.next()){
+                //username and password comparison
+                if(rs.getString(2).equals(username) && rs.getString(3).equals(password)){
+                    log = 0;
+                    break;
+                }
+            }
+            
+            if(log == 0){
+                JOptionPane.showMessageDialog(this, "login succeed!");
+            }else{
+                JOptionPane.showMessageDialog(this, "can't match the username to the password!");
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(this, "connection failed!");
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

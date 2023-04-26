@@ -1,5 +1,7 @@
 package src;
 
+import javax.swing.JOptionPane;
+import model.NumberDirectory;
 import model.Shipment;
 import model.ShipmentDirectory;
 
@@ -73,6 +75,8 @@ public class ShippingPanel extends javax.swing.JPanel {
         recieverNameField = new javax.swing.JTextField();
         rePhoneNumField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(600, 727));
 
         titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titleLabel.setText("New Shipping");
@@ -239,16 +243,17 @@ public class ShippingPanel extends javax.swing.JPanel {
                     .addComponent(shipperInfoLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
-                        .addComponent(titleLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(submitButton)))
+                        .addComponent(titleLabel)))
                 .addGap(97, 97, 97))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addComponent(submitButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addComponent(titleLabel)
                 .addGap(18, 18, 18)
                 .addComponent(shipperInfoLabel)
@@ -278,7 +283,7 @@ public class ShippingPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressLabel)
                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(18, 18, 18)
                 .addComponent(packageTitleField)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -316,17 +321,22 @@ public class ShippingPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rePhoneNumLabel)
                     .addComponent(rePhoneNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitButton)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         Shipment ship = new Shipment();
-//        ship.set
+        ship.setPhoneNum(Integer.parseInt(phoneNumField.getText()));
+        ship.setTrackingNum(NumberDirectory.getInstance().generateRefNum());
+        ship.setDesAddress(deAddressField.getText());
+        ship.setStartAddress(addressField.getText());
+        
         ShipmentDirectory.getInstance().addShipment(ship);
+        JOptionPane.showMessageDialog(this, "Shipment created!");
     }//GEN-LAST:event_submitButtonActionPerformed
 
 

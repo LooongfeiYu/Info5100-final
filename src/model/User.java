@@ -12,8 +12,17 @@ public class User {
     private int id;
     private String userName;
     private String password;
+    private String type;
     private String name;
     private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getName() {
         return name;
@@ -22,7 +31,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    private String type;
 
     public String getType() {
         return type;

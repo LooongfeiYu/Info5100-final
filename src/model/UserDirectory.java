@@ -38,5 +38,8 @@ public class UserDirectory {
         this.users = users;
     }
     
+    public void addUser(User u){
+        this.users.add(u);
+    }
     
 }

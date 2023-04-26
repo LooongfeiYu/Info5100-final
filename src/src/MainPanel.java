@@ -35,6 +35,7 @@ public class MainPanel extends javax.swing.JFrame {
         distributButton = new javax.swing.JButton();
         managerButton = new javax.swing.JButton();
         trainsferStationButton = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         bottomPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,6 +77,13 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        loginButton.setText("login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
@@ -89,8 +97,22 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(managerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(trackingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(trainsferStationButton))
+                    .addGroup(topPanelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(distributButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(packageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(shippingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(managerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(trackingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(trainsferStationButton)))
+                    .addGroup(topPanelLayout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(loginButton)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
@@ -105,7 +127,9 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(distributButton)
                     .addComponent(managerButton)
                     .addComponent(trainsferStationButton))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(loginButton)
+                .addGap(29, 29, 29))
         );
 
         splitPanel.setTopComponent(topPanel);
@@ -162,6 +186,14 @@ public class MainPanel extends javax.swing.JFrame {
         layout.next(bottomPanel);// TODO add your handling code here:
     }//GEN-LAST:event_trainsferStationButtonActionPerformed
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        loginPanel logPanel = new loginPanel();
+        splitPanel.setBottomComponent(logPanel);
+        CardLayout layout = (CardLayout) bottomPanel.getLayout();
+        layout.next(bottomPanel);
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,6 +235,7 @@ public class MainPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton distributButton;
+    private javax.swing.JButton loginButton;
     private javax.swing.JButton managerButton;
     private javax.swing.JButton shippingButton;
     private javax.swing.JSplitPane splitPanel;

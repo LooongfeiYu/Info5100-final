@@ -4,6 +4,7 @@
  */
 package src;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Shipment;
 import model.ShipmentDirectory;
@@ -41,7 +42,7 @@ public class distributePanel extends javax.swing.JPanel {
         plateField = new javax.swing.JTextField();
         assignButton = new javax.swing.JButton();
         shipmentsTitleLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
 
         distributeTitleLabel.setText("Distribute");
 
@@ -99,10 +100,10 @@ public class distributePanel extends javax.swing.JPanel {
 
         shipmentsTitleLabel.setText("Shipments");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -145,7 +146,7 @@ public class distributePanel extends javax.swing.JPanel {
                         .addComponent(assignButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(238, 238, 238)
-                        .addComponent(jButton1)))
+                        .addComponent(updateButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,7 +159,7 @@ public class distributePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shipmentsTable, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(updateButton)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iDLabel)
@@ -193,10 +194,11 @@ public class distributePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_assignButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        populateTable();
+        JOptionPane.showMessageDialog(this, "updated!");
+    }//GEN-LAST:event_updateButtonActionPerformed
     
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
@@ -214,7 +216,6 @@ public class distributePanel extends javax.swing.JPanel {
     private javax.swing.JLabel distributeTitleLabel;
     private javax.swing.JTextField iDField;
     private javax.swing.JLabel iDLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField plateField;
@@ -222,5 +223,6 @@ public class distributePanel extends javax.swing.JPanel {
     private javax.swing.JTable shipmentTable;
     private javax.swing.JScrollPane shipmentsTable;
     private javax.swing.JLabel shipmentsTitleLabel;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

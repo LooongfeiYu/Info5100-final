@@ -12,5 +12,30 @@ import java.util.ArrayList;
  */
 public class TruckDirectory {
     
-    private ArrayList<User> trucks;
+    private ArrayList<User> trucks;   
+    
+    private static volatile TruckDirectory instance = null;
+
+    private TruckDirectory() {
+        trucks = new ArrayList<>();
+    }
+    
+    public static TruckDirectory getInstance(){
+        if(instance == null){
+            synchronized(TruckDirectory.class){
+                if(instance == null){
+                    instance = new TruckDirectory();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public ArrayList<User> getTrucks() {
+        return trucks;
+    }
+
+    public void setTrucks(ArrayList<User> trucks) {
+        this.trucks = trucks;
+    }
 }

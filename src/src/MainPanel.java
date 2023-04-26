@@ -30,7 +30,6 @@ public class MainPanel extends javax.swing.JFrame {
 
         splitPanel = new javax.swing.JSplitPane();
         topPanel = new javax.swing.JPanel();
-        packageButton = new javax.swing.JButton();
         shippingButton = new javax.swing.JButton();
         trackingButton = new javax.swing.JButton();
         distributButton = new javax.swing.JButton();
@@ -41,13 +40,6 @@ public class MainPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         splitPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        packageButton.setText("packagePanel");
-        packageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                packageButtonActionPerformed(evt);
-            }
-        });
 
         shippingButton.setText("shippingPanel");
         shippingButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,9 +82,7 @@ public class MainPanel extends javax.swing.JFrame {
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(distributButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(packageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(distributButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(shippingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,7 +98,6 @@ public class MainPanel extends javax.swing.JFrame {
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(packageButton)
                     .addComponent(shippingButton)
                     .addComponent(trackingButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -137,13 +126,6 @@ public class MainPanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void packageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageButtonActionPerformed
-        PackagePanel packagePanel = new PackagePanel(); // create new panel
-        splitPanel.setBottomComponent(packagePanel);    
-        CardLayout layout = (CardLayout) bottomPanel.getLayout();
-        layout.next(bottomPanel);
-    }//GEN-LAST:event_packageButtonActionPerformed
 
     private void shippingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingButtonActionPerformed
         ShippingPanel shippingPanel = new ShippingPanel(); // create new panel
@@ -222,7 +204,6 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton distributButton;
     private javax.swing.JButton managerButton;
-    private javax.swing.JButton packageButton;
     private javax.swing.JButton shippingButton;
     private javax.swing.JSplitPane splitPanel;
     private javax.swing.JPanel topPanel;

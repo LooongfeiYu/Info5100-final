@@ -144,5 +144,10 @@ public class Shipment {
     public void setArrivals(Dictionary<String, Date> arrivals) {
         this.arrivals = arrivals;
     }
+
+    @Override
+    public String toString() {
+        return this.trackingNum + "";
+    }
     
 }

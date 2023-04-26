@@ -4,6 +4,10 @@
  */
 package src;
 
+import javax.swing.table.DefaultTableModel;
+import model.Shipment;
+import model.ShipmentDirectory;
+
 /**
  *
  * @author User
@@ -31,13 +35,14 @@ public class DriverPanel extends javax.swing.JPanel {
         driverIDLabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        shippmentTable = new javax.swing.JTable();
+        shipmentTable = new javax.swing.JTable();
         subtitleLabel = new javax.swing.JLabel();
         pathLabel = new javax.swing.JLabel();
         pathField = new javax.swing.JTextField();
         typeLabel = new javax.swing.JLabel();
         typeField = new javax.swing.JTextField();
         confirmButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -46,7 +51,7 @@ public class DriverPanel extends javax.swing.JPanel {
 
         driverIDLabel.setText("DriverID");
 
-        shippmentTable.setModel(new javax.swing.table.DefaultTableModel(
+        shipmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,7 +70,7 @@ public class DriverPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(shippmentTable);
+        jScrollPane1.setViewportView(shipmentTable);
 
         subtitleLabel.setText("Unfinished shippment:");
 
@@ -74,6 +79,13 @@ public class DriverPanel extends javax.swing.JPanel {
         typeLabel.setText("Type in finished Shippment number");
 
         confirmButton.setText("Confirm");
+
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,7 +118,10 @@ public class DriverPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(288, 288, 288)
-                        .addComponent(confirmButton)))
+                        .addComponent(confirmButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(updateButton)))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,7 +137,9 @@ public class DriverPanel extends javax.swing.JPanel {
                 .addComponent(subtitleLabel)
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addGap(18, 18, 18)
+                .addComponent(updateButton)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pathLabel)
                     .addComponent(pathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,7 +153,25 @@ public class DriverPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_updateButtonActionPerformed
 
+
+    public void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
+        model.setRowCount(0);
+        for(Shipment s: ShipmentDirectory.getInstance().getShipment()){
+            Object[] row = new Object[4];
+            row[0] = s;
+            row[1] = s.getStartCountry() + "," + s.getStartAddress();
+            row[2] = s.getDesCountry() + "," + s.getDesAddress();
+            row[3] = s.getStatus();
+            model.addRow(row);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel driverIDLabel;
@@ -145,10 +180,11 @@ public class DriverPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField pathField;
     private javax.swing.JLabel pathLabel;
-    private javax.swing.JTable shippmentTable;
+    private javax.swing.JTable shipmentTable;
     private javax.swing.JLabel subtitleLabel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JTextField typeField;
     private javax.swing.JLabel typeLabel;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

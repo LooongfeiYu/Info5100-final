@@ -18,16 +18,14 @@ public class Shipment {
     private int trackingNum;
     private int phoneNum;
     private int driverID;
-    private String startCountry;
-    private String startPostalCode;
     private String startAddress;
     private Date startDate;
-    private Date arriveDate;
-    private String desCountry;
-    private String desPostalCode;
+    private Date arriveDate;   
     private String desAddress;
     private String packageInfo;
     private Status status;
+    private String shipEmail;
+    private String recipientsEmail;
     private ArrayList<String[]> arrivals;
 
     public Shipment() {
@@ -45,21 +43,8 @@ public class Shipment {
 
    
 
-    public String getStartCountry() {
-        return startCountry;
-    }
 
-    public void setStartCountry(String startCountry) {
-        this.startCountry = startCountry;
-    }
-
-    public String getStartPostalCode() {
-        return startPostalCode;
-    }
-
-    public void setStartPostalCode(String startPostalCode) {
-        this.startPostalCode = startPostalCode;
-    }
+    
 
     public String getStartAddress() {
         return startAddress;
@@ -109,21 +94,8 @@ public class Shipment {
         this.arriveDate = arriveDate;
     }
 
-    public String getDesCountry() {
-        return desCountry;
-    }
 
-    public void setDesCountry(String desCountry) {
-        this.desCountry = desCountry;
-    }
-
-    public String getDesPostalCode() {
-        return desPostalCode;
-    }
-
-    public void setDesPostalCode(String desPostalCode) {
-        this.desPostalCode = desPostalCode;
-    }
+    
 
     public Status getStatus() {
         return status;
@@ -165,8 +137,23 @@ public class Shipment {
         this.recipients = recipients;
     }
 
-    @Override
-    public String toString() {
-        return this.trackingNum + "";
+    public String getShipEmail() {
+        return shipEmail;
+    }
+
+    public void setShipEmail(String shipEmail) {
+        this.shipEmail = shipEmail;
+    }
+
+    public String getRecipientsEmail() {
+        return recipientsEmail;
+    }
+
+    public void setRecipientsEmail(String recipientsEmail) {
+        this.recipientsEmail = recipientsEmail;
+    }
+
+    public void addArrival(String[] list){
+        arrivals.add(list);
     }
 }

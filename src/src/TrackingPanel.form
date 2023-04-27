@@ -21,7 +21,7 @@
               <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -30,18 +30,18 @@
                               <Component id="trackNumLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="packNumLabel" max="32767" attributes="0"/>
-                                  <Component id="shipperAccLabel" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="shipperAccLabel" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Component id="recipientsNameLabel" min="-2" pref="102" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="packNumField" max="32767" attributes="0"/>
                           <Component id="trackNumField" max="32767" attributes="0"/>
-                          <Component id="shipperAccField" pref="225" max="32767" attributes="0"/>
+                          <Component id="shipperNameField" pref="225" max="32767" attributes="0"/>
+                          <Component id="recipientsNameField" pref="225" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="trackButton" min="-2" max="-2" attributes="0"/>
@@ -49,39 +49,18 @@
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="datefField" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <Component id="datefLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="destinationLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="datetField" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <Component id="datetLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="destinationField" min="-2" pref="221" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="destinationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="statusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="destinationField" min="-2" pref="221" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="postalCodeLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="statusField" min="-2" pref="92" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Component id="driverIDField" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="driverIDLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="postalCodeField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -95,48 +74,33 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="trackNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="trackNumField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="trackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="trackNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="trackNumField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="trackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="packNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="packNumField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="shipperAccField" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="shipperNameField" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="shipperAccLabel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="datefLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="datetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="recipientsNameField" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="recipientsNameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="datetField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="datefField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="driverIDLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="driverIDField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="destinationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="destinationField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="postalCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="postalCodeField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="statusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="statusField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="282" max="-2" attributes="0"/>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -171,31 +135,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trackButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="packNumLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Package Number:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="packNumField">
-    </Component>
     <Component class="javax.swing.JLabel" name="shipperAccLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Shipper Account"/>
+        <Property name="text" type="java.lang.String" value="Shipper Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="datefLabel">
+    <Component class="javax.swing.JLabel" name="driverIDLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date From"/>
+        <Property name="text" type="java.lang.String" value="DriverID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="datetLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Date To"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="datefField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="datetField">
+    <Component class="javax.swing.JTextField" name="driverIDField">
     </Component>
     <Component class="javax.swing.JLabel" name="destinationLabel">
       <Properties>
@@ -214,7 +164,7 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="4">
                 <Column editable="true" title="Location" type="java.lang.String"/>
-                <Column editable="true" title="Next arrive" type="java.lang.String"/>
+                <Column editable="true" title="Arrival data" type="java.lang.String"/>
                 <Column editable="true" title="Status" type="java.lang.String"/>
               </Table>
             </Property>
@@ -244,23 +194,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="shipperAccField">
+    <Component class="javax.swing.JTextField" name="shipperNameField">
     </Component>
     <Component class="javax.swing.JTextField" name="destinationField">
     </Component>
-    <Component class="javax.swing.JLabel" name="postalCodeLabel">
+    <Component class="javax.swing.JTextField" name="recipientsNameField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="recipientsNameLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Postal code"/>
+        <Property name="text" type="java.lang.String" value="Recipients Name"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="postalCodeField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="statusLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Status"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="statusField">
     </Component>
   </SubComponents>
 </Form>

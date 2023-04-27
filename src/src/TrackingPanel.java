@@ -4,6 +4,10 @@
  */
 package src;
 
+import javax.swing.table.DefaultTableModel;
+import model.Shipment;
+import model.ShipmentDirectory;
+
 /**
  *
  * @author User
@@ -30,22 +34,16 @@ public class TrackingPanel extends javax.swing.JPanel {
         trackNumLabel = new javax.swing.JLabel();
         trackNumField = new javax.swing.JTextField();
         trackButton = new javax.swing.JButton();
-        packNumLabel = new javax.swing.JLabel();
-        packNumField = new javax.swing.JTextField();
         shipperAccLabel = new javax.swing.JLabel();
-        datefLabel = new javax.swing.JLabel();
-        datetLabel = new javax.swing.JLabel();
-        datefField = new javax.swing.JTextField();
-        datetField = new javax.swing.JTextField();
+        driverIDLabel = new javax.swing.JLabel();
+        driverIDField = new javax.swing.JTextField();
         destinationLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         statusTable = new javax.swing.JTable();
-        shipperAccField = new javax.swing.JTextField();
+        shipperNameField = new javax.swing.JTextField();
         destinationField = new javax.swing.JTextField();
-        postalCodeLabel = new javax.swing.JLabel();
-        postalCodeField = new javax.swing.JTextField();
-        statusLabel = new javax.swing.JLabel();
-        statusField = new javax.swing.JTextField();
+        recipientsNameField = new javax.swing.JTextField();
+        recipientsNameLabel = new javax.swing.JLabel();
 
         titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titleLabel.setText("Tracking");
@@ -61,13 +59,9 @@ public class TrackingPanel extends javax.swing.JPanel {
             }
         });
 
-        packNumLabel.setText("Package Number:");
+        shipperAccLabel.setText("Shipper Name");
 
-        shipperAccLabel.setText("Shipper Account");
-
-        datefLabel.setText("Date From");
-
-        datetLabel.setText("Date To");
+        driverIDLabel.setText("DriverID");
 
         destinationLabel.setText("Destination");
 
@@ -79,7 +73,7 @@ public class TrackingPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Location", "Next arrive", "Status"
+                "Location", "Arrival data", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -92,9 +86,7 @@ public class TrackingPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(statusTable);
 
-        postalCodeLabel.setText("Postal code");
-
-        statusLabel.setText("Status");
+        recipientsNameLabel.setText("Recipients Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,43 +105,28 @@ public class TrackingPanel extends javax.swing.JPanel {
                                 .addComponent(trackNumLabel)
                                 .addGap(29, 29, 29))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(packNumLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(shipperAccLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(shipperAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recipientsNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(packNumField)
                             .addComponent(trackNumField)
-                            .addComponent(shipperAccField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                            .addComponent(shipperNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(recipientsNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                         .addGap(50, 50, 50)
                         .addComponent(trackButton))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(datefField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(datefLabel))
+                                    .addComponent(destinationLabel)
                                     .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(datetField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(datetLabel)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(destinationLabel)
-                                        .addComponent(statusLabel))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(postalCodeLabel))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE)))))
-                            .addGap(18, 18, 18)
-                            .addComponent(postalCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(driverIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(driverIDLabel)))
+                            .addGap(177, 177, 177))))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,65 +135,62 @@ public class TrackingPanel extends javax.swing.JPanel {
                 .addGap(14, 14, 14)
                 .addComponent(titleLabel)
                 .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(trackNumLabel)
+                    .addComponent(trackNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(trackButton))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(trackNumLabel)
-                            .addComponent(trackNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(trackButton))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(packNumLabel)
-                            .addComponent(packNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(shipperAccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(shipperNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(shipperAccLabel))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(datefLabel)
-                    .addComponent(datetLabel))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(datetField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datefField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(recipientsNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipientsNameLabel))
+                .addGap(28, 28, 28)
+                .addComponent(driverIDLabel)
                 .addGap(18, 18, 18)
+                .addComponent(driverIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(destinationLabel)
-                    .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(postalCodeLabel)
-                    .addComponent(postalCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(statusLabel)
-                    .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                    .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void trackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackButtonActionPerformed
         // TODO add your handling code here:
-        
+        for (Shipment s: ShipmentDirectory.getInstance().getShipment()){
+            DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
+            model.setRowCount(0);
+            String[] arrival = s.getArrivals().get(s.getArrivals().size()-1);
+            if (s.getTrackingNum() == Integer.parseInt(trackNumField.getText())){
+                shipperNameField.setText(s.getShipper());
+                recipientsNameField.setText(s.getRecipients());
+                driverIDField.setText(s.getDriverID()+"");
+                destinationField.setText(s.getDesAddress());
+                Object[] row = new Object[3];
+                row[0]=arrival[0];
+                row[1]=arrival[1];
+                row[2]=s.getStatus();
+            }
+        }
     }//GEN-LAST:event_trackButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField datefField;
-    private javax.swing.JLabel datefLabel;
-    private javax.swing.JTextField datetField;
-    private javax.swing.JLabel datetLabel;
     private javax.swing.JTextField destinationField;
     private javax.swing.JLabel destinationLabel;
+    private javax.swing.JTextField driverIDField;
+    private javax.swing.JLabel driverIDLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField packNumField;
-    private javax.swing.JLabel packNumLabel;
-    private javax.swing.JTextField postalCodeField;
-    private javax.swing.JLabel postalCodeLabel;
-    private javax.swing.JTextField shipperAccField;
+    private javax.swing.JTextField recipientsNameField;
+    private javax.swing.JLabel recipientsNameLabel;
     private javax.swing.JLabel shipperAccLabel;
-    private javax.swing.JTextField statusField;
-    private javax.swing.JLabel statusLabel;
+    private javax.swing.JTextField shipperNameField;
     private javax.swing.JTable statusTable;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton trackButton;

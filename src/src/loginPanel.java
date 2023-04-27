@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import model.Shipment;
 
 
 /**
@@ -106,8 +107,10 @@ public class loginPanel extends javax.swing.JPanel {
             int log = 1;
             rs = DbUtil.getInstance().getRS("select * from t_user");
             while(rs.next()){
+                
+                Shipment s;
                 //username and password comparison
-                if(rs.getString(2).equals(username) && rs.getString(3).equals(password)){
+                if(rs.getString(2).equalsIgnoreCase(username) && rs.getString(3).equalsIgnoreCase(password)){
                     log = 0;
                     break;
                 }

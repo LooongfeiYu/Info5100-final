@@ -118,6 +118,13 @@ public class DbUtil {
         pst.setString(6, u.getAddress());
         pst.setString(7, u.getLocation());
         pst.setString(8, u.getLicensePlate());
+        pst.executeUpdate();
+    }
+    
+    public void removeUserFromUserTable(int id) throws SQLException{
+        pst = conn.prepareStatement("delete from t_user where id = ?");
+        pst.setInt(1, id);
+        pst.executeUpdate();
     }
     
     public void addShipmentToShipTable(Shipment s) throws SQLException{
@@ -126,5 +133,7 @@ public class DbUtil {
         pst.setString(2, s.getDesAddress());
         pst.setString(3, s.getStartAddress());
         pst.setInt(4, s.getDriverID());
+        pst.executeUpdate();
     }
+    
 }

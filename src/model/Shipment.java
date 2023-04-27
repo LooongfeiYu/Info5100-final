@@ -23,14 +23,13 @@ public class Shipment {
     private Date arriveDate;   
     private String desAddress;
     private String packageInfo;
-    private Status status;
+    private String status;
     private String shipEmail;
     private String recipientsEmail;
     private ArrayList<String[]> arrivals;
 
     public Shipment() {
         arrivals = new ArrayList<>();
-        status = new Status();
     }
 
     public int getDriverID() {
@@ -39,12 +38,7 @@ public class Shipment {
 
     public void setDriverID(int driverID) {
         this.driverID = driverID;
-    }
-
-   
-
-
-    
+    }    
 
     public String getStartAddress() {
         return startAddress;
@@ -97,11 +91,11 @@ public class Shipment {
 
     
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

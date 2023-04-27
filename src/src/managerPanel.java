@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Driver;
 import model.Shipment;
 import model.ShipmentDirectory;
 import model.User;
@@ -42,8 +43,6 @@ public class managerPanel extends javax.swing.JPanel {
         existingTable = new javax.swing.JTable();
         existingTitleLabel = new javax.swing.JLabel();
         locationField = new javax.swing.JTextField();
-        iDField = new javax.swing.JTextField();
-        iDLabel = new javax.swing.JLabel();
         locationLabel = new javax.swing.JLabel();
         typeLabel = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
@@ -88,19 +87,16 @@ public class managerPanel extends javax.swing.JPanel {
             }
         });
 
-        iDField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iDFieldActionPerformed(evt);
-            }
-        });
-
-        iDLabel.setText("ID");
-
         locationLabel.setText("Location");
 
         typeLabel.setText("Type");
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Add");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,44 +150,43 @@ public class managerPanel extends javax.swing.JPanel {
                 .addComponent(managerTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(existingTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(122, 122, 122)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(typeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-                                .addComponent(typeField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(locationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(licensePlateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                                    .addComponent(iDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(licensePlateField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(138, 138, 138))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deleteButton)
-                .addGap(48, 48, 48)
-                .addComponent(addButton)
-                .addGap(67, 67, 67)
-                .addComponent(updateButton)
-                .addGap(186, 186, 186))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(306, 306, 306)
-                .addComponent(refreshButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(152, 152, 152)
+                                .addComponent(existingTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(typeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(typeField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(locationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(licensePlateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(locationField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(licensePlateField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(statusField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(deleteButton)
+                                    .addGap(48, 48, 48)
+                                    .addComponent(addButton)
+                                    .addGap(67, 67, 67)
+                                    .addComponent(updateButton)
+                                    .addGap(48, 48, 48)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(refreshButton)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,11 +199,7 @@ public class managerPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(refreshButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(iDLabel))
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(licensePlateLabel)
                     .addComponent(licensePlateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,7 +220,7 @@ public class managerPanel extends javax.swing.JPanel {
                     .addComponent(deleteButton)
                     .addComponent(addButton)
                     .addComponent(updateButton))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -237,18 +228,29 @@ public class managerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_locationFieldActionPerformed
 
-    private void iDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iDFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_iDFieldActionPerformed
-
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         int selectedRow = existingTable.getSelectedRow();
+        User user;
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to be updated", "Error - No selection", JOptionPane.WARNING_MESSAGE);
         } else {
-            
+            DefaultTableModel model = (DefaultTableModel) existingTable.getModel();
+            user = (User) model.getValueAt(selectedRow, 0);
+            // todo: update info
+            user.setLocation(locationField.getText());
+            user.setLicensePlate(licensePlateField.getText());
+            user.setStatus(statusField.getText());
+            user.setType(typeField.getText());
+
+            try {
+                DbUtil.getInstance().removeUserFromUserTable(user.getId());
+                DbUtil.getInstance().addUserToUserTable(user);
+            } catch (SQLException ex) {
+                Logger.getLogger(managerPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-    // TODO add your handling code here:
+        populateTable();
+        // TODO add your handling code here:
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
@@ -270,23 +272,48 @@ public class managerPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        User u = new User();
+        User user = new User();
+
+        // todo: update info
+        user.setLocation(locationField.getText());
+        user.setLicensePlate(licensePlateField.getText());
+        user.setStatus(statusField.getText());
+        user.setType(typeField.getText());
         
-        
-        UserDirectory.getInstance().addUser(u);
         try {
-            DbUtil.getInstance().addUserToUserTable(u);
+            DbUtil.getInstance().addUserToUserTable(user);
+            UserDirectory.getInstance().addUser(user);
         } catch (SQLException ex) {
             Logger.getLogger(managerPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         populateTable();
     }//GEN-LAST:event_addButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
 
-    public void populateTable(){
+        int selectedRow = existingTable.getSelectedRow();
+        User user;
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to be updated", "Error - No selection", JOptionPane.WARNING_MESSAGE);
+        } else {
+            DefaultTableModel model = (DefaultTableModel) existingTable.getModel();
+            user = (User) model.getValueAt(selectedRow, 0);
+
+            try {
+                DbUtil.getInstance().removeUserFromUserTable(user.getId());
+                UserDirectory.getInstance().removeUser(user);
+            } catch (SQLException ex) {
+                Logger.getLogger(managerPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        populateTable();
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) existingTable.getModel();
         model.setRowCount(0);
-        for(User u: UserDirectory.getInstance().getUsers()){
+        for (User u : UserDirectory.getInstance().getUsers()) {
             Object[] row = new Object[5];
             row[0] = u;
             row[1] = u.getLicensePlate();
@@ -302,8 +329,6 @@ public class managerPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JTable existingTable;
     private javax.swing.JLabel existingTitleLabel;
-    private javax.swing.JTextField iDField;
-    private javax.swing.JLabel iDLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField licensePlateField;
     private javax.swing.JLabel licensePlateLabel;

@@ -42,4 +42,7 @@ public class UserDirectory {
         this.users.add(u);
     }
     
+    public void removeUser(User u){
+        this.users.remove(u);
+    }
 }

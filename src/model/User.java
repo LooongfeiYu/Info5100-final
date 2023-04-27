@@ -20,18 +20,18 @@ public class User {
     private ArrayList<Shipment> shipments;
     private String licensePlate;
     private String location;
-    private Status status;
+    private String status;
 
     @Override
     public String toString() {
         return id + "";
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

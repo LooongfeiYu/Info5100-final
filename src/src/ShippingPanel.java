@@ -1,5 +1,9 @@
 package src;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.NumberDirectory;
 import model.Shipment;
@@ -19,6 +23,36 @@ public class ShippingPanel extends javax.swing.JPanel {
     /**
      * Creates new form ShippingPanel
      */
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    
+    public String packageStatus (){
+        String gas = null;
+        String liquid = null;
+        String solid = null;
+        String flame = null;
+        String fragile = null;
+        String toxic = null;
+        
+        if (gasBox.isSelected()){
+            gas = "gas";
+        }
+        if (liquidBox.isSelected()){
+            liquid = "liquid";
+        }
+        if (solidBox.isSelected()){
+            solid = "solid";
+        }
+        if (flammableBox.isSelected()){
+            flame = "flammable";
+        }
+        if (fragileBox.isSelected()){
+            fragile = "fragile";
+        }
+        if (toxicBox.isSelected()){
+            toxic = "toxic";
+        }
+        return gas+liquid+solid+flame+toxic;
+    }
     public ShippingPanel() {
         initComponents();
     }
@@ -75,6 +109,10 @@ public class ShippingPanel extends javax.swing.JPanel {
         recieverNameField = new javax.swing.JTextField();
         rePhoneNumField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
+        reEmailLabel = new javax.swing.JLabel();
+        reEmailField = new javax.swing.JTextField();
+        dataLabel = new javax.swing.JLabel();
+        dateField = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(600, 727));
 
@@ -143,112 +181,131 @@ public class ShippingPanel extends javax.swing.JPanel {
             }
         });
 
+        reEmailLabel.setText("Email");
+
+        dataLabel.setText("Date");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(packageTitleField)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(weighLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(weightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kgLabel)
-                        .addGap(57, 57, 57)
-                        .addComponent(statusLabel)
-                        .addGap(18, 18, 18)
+                        .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(packageTitleField)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(solidBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(weighLabel)
                                 .addGap(18, 18, 18)
-                                .addComponent(liquidBox, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(gasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(fragileBox)
-                                .addGap(18, 18, 18)
-                                .addComponent(flammableBox)
+                                .addComponent(weightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(toxicBox))))
-                    .addComponent(destinationTitleLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(deProvinceLabel)
+                                .addComponent(kgLabel)
+                                .addGap(57, 57, 57)
+                                .addComponent(statusLabel)
                                 .addGap(18, 18, 18)
-                                .addComponent(deProvinceField, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(deCityLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(deCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(deAddressLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(deAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(rePhoneNumLabel)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rePhoneNumField))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(recieverNameLabel)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(recieverNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(63, 63, 63)
-                        .addComponent(deRegionLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(deRegionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addressLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(provinceLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(provinceField, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(cityLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(regionLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(regionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phoneNumLabel)
-                                    .addComponent(emailLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emailField)
-                                    .addComponent(phoneNumField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(86, 86, 86)
-                                        .addComponent(shipperNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(shipperNameLabel))
-                                .addGap(18, 18, 18)
-                                .addComponent(ShipperIDLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(shipperIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(shipperInfoLabel)
+                                        .addComponent(solidBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(liquidBox, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(gasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(fragileBox)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(flammableBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(toxicBox))))
+                            .addComponent(destinationTitleLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(deProvinceLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(deProvinceField, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(37, 37, 37)
+                                                .addComponent(deCityLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(deCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(deAddressLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(deAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(63, 63, 63)
+                                        .addComponent(deRegionLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(deRegionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addComponent(dataLabel)
+                                                .addGap(44, 44, 44)
+                                                .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addComponent(rePhoneNumLabel)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(rePhoneNumField))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addComponent(recieverNameLabel)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(recieverNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(41, 41, 41)
+                                                .addComponent(reEmailLabel)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(reEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(addressLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(provinceLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(provinceField, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(cityLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(regionLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(regionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(phoneNumLabel)
+                                            .addComponent(emailLabel))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(emailField)
+                                            .addComponent(phoneNumField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(86, 86, 86)
+                                                .addComponent(shipperNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(shipperNameLabel))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ShipperIDLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(shipperIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(shipperInfoLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(titleLabel))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(titleLabel)))
-                .addGap(97, 97, 97))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(submitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(300, 300, 300)
+                        .addComponent(submitButton)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,23 +377,38 @@ public class ShippingPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rePhoneNumLabel)
-                    .addComponent(rePhoneNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(rePhoneNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reEmailLabel)
+                    .addComponent(reEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataLabel)
+                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(submitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
-        Shipment ship = new Shipment();
-        ship.setPhoneNum(Integer.parseInt(phoneNumField.getText()));
-        ship.setTrackingNum(NumberDirectory.getInstance().generateRefNum());
-        ship.setDesAddress(deAddressField.getText());
-        ship.setStartAddress(addressField.getText());
-        
-        ShipmentDirectory.getInstance().addShipment(ship);
-        JOptionPane.showMessageDialog(this, "Shipment created!");
+        try {
+            // TODO add your handling code here:
+            Shipment ship = new Shipment();
+            ship.setPhoneNum(Integer.parseInt(phoneNumField.getText()));
+            ship.setTrackingNum(NumberDirectory.getInstance().generateRefNum());
+            ship.setDesAddress(deAddressField.getText()+','+deRegionField.getText()+','+deCityField.getText()+','+deProvinceField.getText());
+            ship.setStartAddress(addressField.getText()+','+regionField.getText()+','+cityField.getText()+','+provinceField.getText());
+            ship.setShipEmail(emailField.getText());
+            ship.setRecipientsEmail(reEmailField.getText());
+            ship.setShipper(shipperNameField.getText());
+            ship.setRecipients(recieverNameField.getText());
+            ship.setStartDate( format.parse(dateField.getText()));
+            ship.setPackageInfo(packageStatus());
+            ShipmentDirectory.getInstance().addShipment(ship);
+            JOptionPane.showMessageDialog(this, "Shipment created!");
+        } catch (ParseException ex) {
+            Logger.getLogger(ShippingPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
 
@@ -346,6 +418,8 @@ public class ShippingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField cityField;
     private javax.swing.JLabel cityLabel;
+    private javax.swing.JLabel dataLabel;
+    private javax.swing.JTextField dateField;
     private javax.swing.JTextField deAddressField;
     private javax.swing.JLabel deAddressLabel;
     private javax.swing.JTextField deCityField;
@@ -367,6 +441,8 @@ public class ShippingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel phoneNumLabel;
     private javax.swing.JTextField provinceField;
     private javax.swing.JLabel provinceLabel;
+    private javax.swing.JTextField reEmailField;
+    private javax.swing.JLabel reEmailLabel;
     private javax.swing.JTextField rePhoneNumField;
     private javax.swing.JLabel rePhoneNumLabel;
     private javax.swing.JTextField recieverNameField;

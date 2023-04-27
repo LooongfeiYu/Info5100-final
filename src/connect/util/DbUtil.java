@@ -3,16 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package connect.util;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import model.Driver;
 import model.Shipment;
 import model.ShipmentDirectory;
 import model.UserDirectory;
@@ -23,16 +22,17 @@ import model.User;
  * @author yulon
  */
 public class DbUtil {
-    
+
     private String dbUrl = "jdbc:mysql://localhost:3306/new_database";
     private String dbUserName = "root";
     private String dbPassword = "Bran@123";
     private String jdbcName = "com.mysql.jdbc.Driver";
-    
+
     Connection conn = null;
     ResultSet rs = null;
     Statement st;
-        
+    PreparedStatement pst;
+
     private static volatile DbUtil instance = null;
 
     private DbUtil() {
@@ -44,11 +44,11 @@ public class DbUtil {
             Logger.getLogger(DbUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static DbUtil getInstance(){
-        if(instance == null){
-            synchronized(DbUtil.class){
-                if(instance == null){
+
+    public static DbUtil getInstance() {
+        if (instance == null) {
+            synchronized (DbUtil.class) {
+                if (instance == null) {
                     instance = new DbUtil();
                 }
             }
@@ -56,59 +56,48 @@ public class DbUtil {
         return instance;
     }
 
-    public Connection getConnection(){
-        try{
+    public Connection getConnection() {
+        try {
             int log = 1;
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_database", "root", "Bran@123");
             st = (Statement) conn.createStatement();
             System.out.println("connection succeed!");
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("connection failed");
         }
         return this.conn;
     }
-    
-    public ResultSet getRS(String query) throws SQLException{
+
+    public ResultSet getRS(String query) throws SQLException {
         st = (Statement) conn.createStatement();
         rs = st.executeQuery(query);
         return rs;
     }
-    
-    public void importDataToUserDir() throws SQLException{
+
+    public void importDataToUserDir() throws SQLException {
         rs = st.executeQuery("select * from t_user");
-        while(rs.next()){
+        while (rs.next()) {
             //username and password comparison
-            if(rs.getString(4).equals("driver")){
-                Driver u = new Driver();
-                u.setId(Integer.parseInt(rs.getString(1)));
-                u.setUserName(rs.getString(2));
-                u.setPassword(rs.getString(3));
-                u.setType(rs.getString(4));
-                u.setName(rs.getString(5));
-                u.setAddress(rs.getString(6));
+            User u = new User();
+            u.setId(rs.getInt(1));
+            u.setUserName(rs.getString(2));
+            u.setPassword(rs.getString(3));
+            u.setType(rs.getString(4));
+            u.setName(rs.getString(5));
+            u.setAddress(rs.getString(6));
+            if (rs.getString(4).equals("driver")) {
                 u.setLocation(rs.getString(7));
                 u.setLicensePlate(rs.getString(8));
-                UserDirectory.getInstance().addUser(u);
-                
-            }else{
-                User u = new User();
-                u.setId(rs.getInt(1));
-                u.setUserName(rs.getString(2));
-                u.setPassword(rs.getString(3));
-                u.setType(rs.getString(4));
-                u.setName(rs.getString(5));
-                u.setAddress(rs.getString(6));
-                UserDirectory.getInstance().addUser(u);
             }
+            UserDirectory.getInstance().addUser(u);
         }
-        
-        
+
         System.out.println("users info imported" + ": " + UserDirectory.getInstance().getUsers().size());
     }
-    
-    public void importShipmentDataToDir() throws SQLException{
+
+    public void importShipmentDataToDir() throws SQLException {
         rs = st.executeQuery("select * from t_shipment");
-        while(rs.next()){
+        while (rs.next()) {
             Shipment s = new Shipment();
             s.setTrackingNum(rs.getInt(1));
             s.setDesAddress(rs.getString(2));
@@ -117,5 +106,25 @@ public class DbUtil {
             ShipmentDirectory.getInstance().addShipment(s);
         }
         System.out.println("shipments info imported" + ": " + ShipmentDirectory.getInstance().getShipment().size());
+    }
+    
+    public void addUserToUserTable(User u) throws SQLException{
+        pst = conn.prepareStatement("insert into t_user(id, username, password, type, name, address, location, license)value(?,?,?,?,?,?,?,?)");
+        pst.setInt(1, u.getId());
+        pst.setString(2, u.getUserName());
+        pst.setString(3, u.getPassword());
+        pst.setString(4, u.getType());
+        pst.setString(5, u.getName());
+        pst.setString(6, u.getAddress());
+        pst.setString(7, u.getLocation());
+        pst.setString(8, u.getLicensePlate());
+    }
+    
+    public void addShipmentToShipTable(Shipment s) throws SQLException{
+        pst = conn.prepareStatement("insert into t_shipment(id, username, password, type, name, address, location, license)value(?,?,?,?,?,?,?,?)");
+        pst.setInt(1, s.getTrackingNum());
+        pst.setString(2, s.getDesAddress());
+        pst.setString(3, s.getStartAddress());
+        pst.setInt(4, s.getDriverID());
     }
 }

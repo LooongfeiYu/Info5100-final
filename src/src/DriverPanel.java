@@ -42,7 +42,7 @@ public class DriverPanel extends javax.swing.JPanel {
         typeLabel = new javax.swing.JLabel();
         typeField = new javax.swing.JTextField();
         confirmButton = new javax.swing.JButton();
-        updateButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -80,10 +80,10 @@ public class DriverPanel extends javax.swing.JPanel {
 
         confirmButton.setText("Confirm");
 
-        updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
 
@@ -121,7 +121,7 @@ public class DriverPanel extends javax.swing.JPanel {
                         .addComponent(confirmButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(300, 300, 300)
-                        .addComponent(updateButton)))
+                        .addComponent(refreshButton)))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +138,7 @@ public class DriverPanel extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(updateButton)
+                .addComponent(refreshButton)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pathLabel)
@@ -153,10 +153,10 @@ public class DriverPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
         populateTable();
-    }//GEN-LAST:event_updateButtonActionPerformed
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
 
     public void populateTable(){
@@ -165,8 +165,8 @@ public class DriverPanel extends javax.swing.JPanel {
         for(Shipment s: ShipmentDirectory.getInstance().getShipment()){
             Object[] row = new Object[4];
             row[0] = s;
-            row[1] = s.getStartCountry() + "," + s.getStartAddress();
-            row[2] = s.getDesCountry() + "," + s.getDesAddress();
+            row[1] = s.getStartAddress();
+            row[2] = s.getDesAddress();
             row[3] = s.getStatus();
             model.addRow(row);
         }
@@ -180,11 +180,11 @@ public class DriverPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField pathField;
     private javax.swing.JLabel pathLabel;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JTable shipmentTable;
     private javax.swing.JLabel subtitleLabel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JTextField typeField;
     private javax.swing.JLabel typeLabel;
-    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

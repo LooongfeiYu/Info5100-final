@@ -48,6 +48,7 @@ public class MainPanel extends javax.swing.JFrame {
                 shippingButtonActionPerformed(evt);
             }
         });
+        topPanel.add(shippingButton);
 
         trackingButton.setText("trackingPanel");
         trackingButton.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +56,7 @@ public class MainPanel extends javax.swing.JFrame {
                 trackingButtonActionPerformed(evt);
             }
         });
+        topPanel.add(trackingButton);
 
         distributButton.setText("distributePanel");
         distributButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +64,7 @@ public class MainPanel extends javax.swing.JFrame {
                 distributButtonActionPerformed(evt);
             }
         });
+        topPanel.add(distributButton);
 
         managerButton.setText("managerPanel");
         managerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +72,7 @@ public class MainPanel extends javax.swing.JFrame {
                 managerButtonActionPerformed(evt);
             }
         });
+        topPanel.add(managerButton);
 
         trainsferStationButton.setText("transferstationPanel");
         trainsferStationButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +80,7 @@ public class MainPanel extends javax.swing.JFrame {
                 trainsferStationButtonActionPerformed(evt);
             }
         });
+        topPanel.add(trainsferStationButton);
 
         loginButton.setText("login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,54 +88,7 @@ public class MainPanel extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
-        topPanel.setLayout(topPanelLayout);
-        topPanelLayout.setHorizontalGroup(
-            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(distributButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(shippingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(managerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(distributButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(packageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(shippingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(managerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(trackingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(trainsferStationButton)))
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(loginButton)))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        topPanelLayout.setVerticalGroup(
-            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(shippingButton)
-                    .addComponent(trackingButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(distributButton)
-                    .addComponent(managerButton)
-                    .addComponent(trainsferStationButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(loginButton)
-                .addGap(29, 29, 29))
-        );
+        topPanel.add(loginButton);
 
         splitPanel.setTopComponent(topPanel);
 

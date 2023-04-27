@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yulon
@@ -15,6 +17,51 @@ public class User {
     private String type;
     private String name;
     private String address;
+    private ArrayList<Shipment> shipments;
+    private String licensePlate;
+    private String location;
+    private Status status;
+
+    @Override
+    public String toString() {
+        return id + "";
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public ArrayList<Shipment> getShipments() {
+        return shipments;
+    }
+
+    public void setShipments(ArrayList<Shipment> shipments) {
+        this.shipments = shipments;
+    }
+    
+    public void addShipment(Shipment s){
+        this.shipments.add(s);
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public String getAddress() {
         return address;

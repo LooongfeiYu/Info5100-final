@@ -45,7 +45,7 @@ public class distributePanel extends javax.swing.JPanel {
         plateField = new javax.swing.JTextField();
         assignButton = new javax.swing.JButton();
         shipmentsTitleLabel = new javax.swing.JLabel();
-        updateButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
 
         distributeTitleLabel.setText("Distribute");
 
@@ -103,10 +103,10 @@ public class distributePanel extends javax.swing.JPanel {
 
         shipmentsTitleLabel.setText("Shipments");
 
-        updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
 
@@ -121,19 +121,21 @@ public class distributePanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(shipmentsTable)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(plateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(plateField))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(iDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nameField)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(refreshButton)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(plateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(plateField))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(iDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(nameField))))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(264, 264, 264)
@@ -143,13 +145,8 @@ public class distributePanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(162, 162, 162))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(assignButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(updateButton)))
+                .addGap(229, 229, 229)
+                .addComponent(assignButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,9 +158,9 @@ public class distributePanel extends javax.swing.JPanel {
                 .addComponent(shipmentsTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shipmentsTable, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(updateButton)
-                .addGap(4, 4, 4)
+                .addGap(10, 10, 10)
+                .addComponent(refreshButton)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iDLabel)
                     .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,7 +172,7 @@ public class distributePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(plateLabel)
                     .addComponent(plateField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(28, 28, 28)
                 .addComponent(assignButton)
                 .addContainerGap(276, Short.MAX_VALUE))
         );
@@ -222,11 +219,11 @@ public class distributePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_assignButtonActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
         populateTable();
         JOptionPane.showMessageDialog(this, "updated!");
-    }//GEN-LAST:event_updateButtonActionPerformed
+    }//GEN-LAST:event_refreshButtonActionPerformed
     
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
@@ -234,8 +231,8 @@ public class distributePanel extends javax.swing.JPanel {
         for(Shipment s: ShipmentDirectory.getInstance().getShipment()){
             Object[] row = new Object[3];
             row[0] = s;
-            row[1] = s.getStartCountry() + "," + s.getStartAddress();
-            row[2] = s.getDesCountry() + "," + s.getDesAddress();
+            row[1] = s.getStartAddress();
+            row[2] = s.getDesAddress();
             model.addRow(row);
         }
     }
@@ -249,9 +246,9 @@ public class distributePanel extends javax.swing.JPanel {
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField plateField;
     private javax.swing.JLabel plateLabel;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JTable shipmentTable;
     private javax.swing.JScrollPane shipmentsTable;
     private javax.swing.JLabel shipmentsTitleLabel;
-    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

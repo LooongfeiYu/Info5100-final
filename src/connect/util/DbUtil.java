@@ -85,10 +85,8 @@ public class DbUtil {
             u.setType(rs.getString(4));
             u.setName(rs.getString(5));
             u.setAddress(rs.getString(6));
-            if (rs.getString(4).equals("driver")) {
-                u.setLocation(rs.getString(7));
-                u.setLicensePlate(rs.getString(8));
-            }
+            u.setLocation(rs.getString(7));
+            u.setLicensePlate(rs.getString(8));
             UserDirectory.getInstance().addUser(u);
         }
 
@@ -107,8 +105,8 @@ public class DbUtil {
         }
         System.out.println("shipments info imported" + ": " + ShipmentDirectory.getInstance().getShipment().size());
     }
-    
-    public void addUserToUserTable(User u) throws SQLException{
+
+    public void addUserToUserTable(User u) throws SQLException {
         pst = conn.prepareStatement("insert into t_user(id, username, password, type, name, address, location, license)value(?,?,?,?,?,?,?,?)");
         pst.setInt(1, u.getId());
         pst.setString(2, u.getUserName());
@@ -120,14 +118,14 @@ public class DbUtil {
         pst.setString(8, u.getLicensePlate());
         pst.executeUpdate();
     }
-    
-    public void removeUserFromUserTable(int id) throws SQLException{
+
+    public void removeUserFromUserTable(int id) throws SQLException {
         pst = conn.prepareStatement("delete from t_user where id = ?");
         pst.setInt(1, id);
         pst.executeUpdate();
     }
-    
-    public void addShipmentToShipTable(Shipment s) throws SQLException{
+
+    public void addShipmentToShipTable(Shipment s) throws SQLException {
         pst = conn.prepareStatement("insert into t_shipment(id, username, password, type, name, address, location, license)value(?,?,?,?,?,?,?,?)");
         pst.setInt(1, s.getTrackingNum());
         pst.setString(2, s.getDesAddress());
@@ -135,5 +133,5 @@ public class DbUtil {
         pst.setInt(4, s.getDriverID());
         pst.executeUpdate();
     }
-    
+
 }

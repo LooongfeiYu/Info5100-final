@@ -110,7 +110,7 @@ public class loginPanel extends javax.swing.JPanel {
                 
                 Shipment s;
                 //username and password comparison
-                if(rs.getString(2).equals(username) && rs.getString(3).equals(password)){
+                if(rs.getString(2).equalsIgnoreCase(username) && rs.getString(3).equalsIgnoreCase(password)){
                     log = 0;
                     break;
                 }

@@ -22,6 +22,10 @@ public class User {
     private String location;
     private String status;
 
+    public User() {
+        shipments = new ArrayList<>();
+    }
+
     @Override
     public String toString() {
         return id + "";

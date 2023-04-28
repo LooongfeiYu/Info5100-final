@@ -28,6 +28,11 @@ public class Shipment {
     private String recipientsEmail;
     private ArrayList<String[]> arrivals;
 
+    @Override
+    public String toString() {
+        return trackingNum + "";
+    }
+
     public Shipment() {
         arrivals = new ArrayList<>();
     }

@@ -27,6 +27,7 @@ public class managerPanel extends javax.swing.JPanel {
      */
     public managerPanel() {
         initComponents();
+        populateTable();
     }
 
     /**

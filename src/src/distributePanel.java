@@ -4,6 +4,10 @@
  */
 package src;
 
+import connect.util.DbUtil;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Driver;
@@ -23,6 +27,7 @@ public class distributePanel extends javax.swing.JPanel {
      */
     public distributePanel() {
         initComponents();
+        populateTable();
     }
 
     /**
@@ -47,17 +52,17 @@ public class distributePanel extends javax.swing.JPanel {
 
         shipmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Tracking Number", "Start Location", "Destination"
+                "Tracking Number", "Start Location", "Destination", "DriverID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -155,11 +160,11 @@ public class distributePanel extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
             s = (Shipment) model.getValueAt(selectedIndex, 0);
             
-            Driver d = null;
+            User d = null;
             //TODO: search id in user dir
             for(User u : UserDirectory.getInstance().getUsers()){
-                if(u.getId() == Integer.parseInt(iDField.getText())){
-                    d = (Driver) u;
+                if(u.getId() == Integer.parseInt(iDField.getText()) &&  u.getType().equals("driver")){
+                    d = u;
                     break;
                 }
             }
@@ -169,9 +174,15 @@ public class distributePanel extends javax.swing.JPanel {
             }else{
                 s.setDriverID(Integer.parseInt(iDField.getText()));
                 d.addShipment(s);
+                try {
+                    DbUtil.getInstance().updateShipmenttoShipmentTable(s);
+                } catch (SQLException ex) {
+                    Logger.getLogger(distributePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 JOptionPane.showMessageDialog(this, "Assigned!");
             }
         }
+        populateTable();
     }//GEN-LAST:event_assignButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
@@ -184,10 +195,11 @@ public class distributePanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) shipmentTable.getModel();
         model.setRowCount(0);
         for(Shipment s: ShipmentDirectory.getInstance().getShipment()){
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             row[0] = s;
             row[1] = s.getStartAddress();
             row[2] = s.getDesAddress();
+            row[3] = s.getDriverID();
             model.addRow(row);
         }
     }

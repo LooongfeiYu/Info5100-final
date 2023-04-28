@@ -129,8 +129,13 @@ public class DbUtil {
         pst.executeUpdate();
     }
 
+    public void updateUsertoUserTable(User u) throws SQLException{
+        removeUserFromUserTable(u.getId());
+        addUserToUserTable(u);
+    }
+    
     public void addShipmentToShipTable(Shipment s) throws SQLException {
-        pst = conn.prepareStatement("insert into t_shipment(id, username, password, type, name, address, location, license)value(?,?,?,?,?,?,?,?)");
+        pst = conn.prepareStatement("insert into t_shipment(tracking_num, des_address, start_address, driver_id)value(?,?,?,?)");
         pst.setInt(1, s.getTrackingNum());
         pst.setString(2, s.getDesAddress());
         pst.setString(3, s.getStartAddress());
@@ -138,4 +143,15 @@ public class DbUtil {
         pst.executeUpdate();
     }
 
+    public void removeShipmentFromShippingTable(int trackingNum) throws SQLException {
+        pst = conn.prepareStatement("delete from t_shipment where tracking_num = ?");
+        pst.setInt(1, trackingNum);
+        pst.executeUpdate();
+    }
+    
+    
+    public void updateShipmenttoShipmentTable(Shipment s) throws SQLException{
+        removeShipmentFromShippingTable(s.getTrackingNum());
+        addShipmentToShipTable(s);
+    }
 }

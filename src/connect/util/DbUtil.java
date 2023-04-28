@@ -36,7 +36,11 @@ public class DbUtil {
     private static volatile DbUtil instance = null;
 
     private DbUtil() {
-        getConnection();
+        try {
+            getConnection();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DbUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             importDataToUserDir();
             importShipmentDataToDir();
@@ -56,7 +60,7 @@ public class DbUtil {
         return instance;
     }
 
-    public Connection getConnection() {
+    public Connection getConnection() throws ClassNotFoundException {
         try {
             int log = 1;
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_database", "root", "Bran@123");

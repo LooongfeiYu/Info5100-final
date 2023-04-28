@@ -17,6 +17,11 @@ public class MainPanel extends javax.swing.JFrame {
      */
     public MainPanel() {
         initComponents();
+        shippingButton.setVisible(false);
+        trackingButton.setVisible(false);
+        distributeButton.setVisible(false);
+        managerButton.setVisible(false);
+        trainsferStationButton.setVisible(false);
     }
 
     /**
@@ -32,10 +37,10 @@ public class MainPanel extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         shippingButton = new javax.swing.JButton();
         trackingButton = new javax.swing.JButton();
-        distributButton = new javax.swing.JButton();
+        distributeButton = new javax.swing.JButton();
         managerButton = new javax.swing.JButton();
         trainsferStationButton = new javax.swing.JButton();
-        loginButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         bottomPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,13 +63,13 @@ public class MainPanel extends javax.swing.JFrame {
         });
         topPanel.add(trackingButton);
 
-        distributButton.setText("distributePanel");
-        distributButton.addActionListener(new java.awt.event.ActionListener() {
+        distributeButton.setText("distributePanel");
+        distributeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                distributButtonActionPerformed(evt);
+                distributeButtonActionPerformed(evt);
             }
         });
-        topPanel.add(distributButton);
+        topPanel.add(distributeButton);
 
         managerButton.setText("managerPanel");
         managerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,13 +87,13 @@ public class MainPanel extends javax.swing.JFrame {
         });
         topPanel.add(trainsferStationButton);
 
-        loginButton.setText("login");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.setText("logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
-        topPanel.add(loginButton);
+        topPanel.add(logoutButton);
 
         splitPanel.setTopComponent(topPanel);
 
@@ -111,7 +116,7 @@ public class MainPanel extends javax.swing.JFrame {
 
     private void shippingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shippingButtonActionPerformed
         ShippingPanel shippingPanel = new ShippingPanel(); // create new panel
-        splitPanel.setBottomComponent(shippingPanel);    
+        splitPanel.setBottomComponent(shippingPanel);
         CardLayout layout = (CardLayout) bottomPanel.getLayout();
         layout.next(bottomPanel);
     }//GEN-LAST:event_shippingButtonActionPerformed
@@ -123,12 +128,12 @@ public class MainPanel extends javax.swing.JFrame {
         layout.next(bottomPanel);// TODO add your handling code here:
     }//GEN-LAST:event_trackingButtonActionPerformed
 
-    private void distributButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distributButtonActionPerformed
+    private void distributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distributeButtonActionPerformed
         distributePanel distributePanel = new distributePanel();
         splitPanel.setBottomComponent(distributePanel);
         CardLayout layout = (CardLayout) bottomPanel.getLayout();
         layout.next(bottomPanel);// TODO add your handling code here:
-    }//GEN-LAST:event_distributButtonActionPerformed
+    }//GEN-LAST:event_distributeButtonActionPerformed
 
     private void managerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerButtonActionPerformed
         managerPanel managerPanel = new managerPanel();
@@ -144,56 +149,36 @@ public class MainPanel extends javax.swing.JFrame {
         layout.next(bottomPanel);// TODO add your handling code here:
     }//GEN-LAST:event_trainsferStationButtonActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-        loginPanel logPanel = new loginPanel();
-        splitPanel.setBottomComponent(logPanel);
-        CardLayout layout = (CardLayout) bottomPanel.getLayout();
-        layout.next(bottomPanel);
-    }//GEN-LAST:event_loginButtonActionPerformed
+        dispose();
+        LoginFrame l = new LoginFrame();
+        l.setVisible(true);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public void setButton(String s) {
+        if (s.equals("customer")) {
+            shippingButton.setVisible(true);
+            trackingButton.setVisible(true);
+        } else if (s.equals("distribute")) {
+            distributeButton.setVisible(true);
+        } else if (s.equals("transfer")) {
+            trainsferStationButton.setVisible(true);
+        } else if (s.equals("manager")) {
+            managerButton.setVisible(true);
+        } else {
+            managerButton.setVisible(true);
+            trainsferStationButton.setVisible(true);
+            distributeButton.setVisible(true);
+            shippingButton.setVisible(true);
+            trackingButton.setVisible(true);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainPanel().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomPanel;
-    private javax.swing.JButton distributButton;
-    private javax.swing.JButton loginButton;
+    private javax.swing.JButton distributeButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton managerButton;
     private javax.swing.JButton shippingButton;
     private javax.swing.JSplitPane splitPanel;

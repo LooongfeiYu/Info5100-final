@@ -1,5 +1,7 @@
 package src;
 
+import connect.util.DbUtil;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -404,9 +406,11 @@ public class ShippingPanel extends javax.swing.JPanel {
             ship.setRecipients(recieverNameField.getText());
             ship.setStartDate( format.parse(dateField.getText()));
             ship.setPackageInfo(packageStatus());
+            
             ShipmentDirectory.getInstance().addShipment(ship);
+            DbUtil.getInstance().addShipmentToShipTable(ship);
             JOptionPane.showMessageDialog(this, "Shipment created!");
-        } catch (ParseException ex) {
+        } catch (ParseException | SQLException ex) {
             Logger.getLogger(ShippingPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitButtonActionPerformed

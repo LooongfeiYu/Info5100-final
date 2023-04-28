@@ -38,11 +38,7 @@ public class distributePanel extends javax.swing.JPanel {
         shipmentsTable = new javax.swing.JScrollPane();
         shipmentTable = new javax.swing.JTable();
         iDLabel = new javax.swing.JLabel();
-        nameLabel = new javax.swing.JLabel();
-        plateLabel = new javax.swing.JLabel();
         iDField = new javax.swing.JTextField();
-        nameField = new javax.swing.JTextField();
-        plateField = new javax.swing.JTextField();
         assignButton = new javax.swing.JButton();
         shipmentsTitleLabel = new javax.swing.JLabel();
         refreshButton = new javax.swing.JButton();
@@ -72,25 +68,9 @@ public class distributePanel extends javax.swing.JPanel {
 
         iDLabel.setText("Driver ID ");
 
-        nameLabel.setText("Driver Name ");
-
-        plateLabel.setText("Licence Plate");
-
         iDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iDFieldActionPerformed(evt);
-            }
-        });
-
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldActionPerformed(evt);
-            }
-        });
-
-        plateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                plateFieldActionPerformed(evt);
             }
         });
 
@@ -123,19 +103,10 @@ public class distributePanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(refreshButton)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(plateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(plateField))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(iDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(nameField))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(iDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(264, 264, 264)
@@ -164,15 +135,7 @@ public class distributePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iDLabel)
                     .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLabel)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(plateLabel)
-                    .addComponent(plateField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(89, 89, 89)
                 .addComponent(assignButton)
                 .addContainerGap(276, Short.MAX_VALUE))
         );
@@ -181,14 +144,6 @@ public class distributePanel extends javax.swing.JPanel {
     private void iDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iDFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_iDFieldActionPerformed
-
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldActionPerformed
-
-    private void plateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_plateFieldActionPerformed
 
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
         // TODO add your handling code here:
@@ -242,10 +197,6 @@ public class distributePanel extends javax.swing.JPanel {
     private javax.swing.JLabel distributeTitleLabel;
     private javax.swing.JTextField iDField;
     private javax.swing.JLabel iDLabel;
-    private javax.swing.JTextField nameField;
-    private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField plateField;
-    private javax.swing.JLabel plateLabel;
     private javax.swing.JButton refreshButton;
     private javax.swing.JTable shipmentTable;
     private javax.swing.JScrollPane shipmentsTable;

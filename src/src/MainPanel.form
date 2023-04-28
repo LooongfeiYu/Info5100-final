@@ -63,12 +63,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trackingButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="distributButton">
+            <Component class="javax.swing.JButton" name="distributeButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="distributePanel"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="distributButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="distributeButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="managerButton">
@@ -87,12 +87,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trainsferStationButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="loginButton">
+            <Component class="javax.swing.JButton" name="logoutButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="login"/>
+                <Property name="text" type="java.lang.String" value="logout"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

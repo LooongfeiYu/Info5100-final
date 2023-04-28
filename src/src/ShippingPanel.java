@@ -406,7 +406,12 @@ public class ShippingPanel extends javax.swing.JPanel {
             ship.setRecipients(recieverNameField.getText());
             ship.setStartDate( format.parse(dateField.getText()));
             ship.setPackageInfo(packageStatus());
-            
+            String loc = addressField.getText();
+            String date = dateField.getText();
+            String[] arrive = new String[2];
+            arrive[0]=loc;
+            arrive[1]=date;
+            ship.addArrival(arrive);
             ShipmentDirectory.getInstance().addShipment(ship);
             DbUtil.getInstance().addShipmentToShipTable(ship);
             JOptionPane.showMessageDialog(this, "Shipment created!");
